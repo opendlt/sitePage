@@ -1,1 +1,69 @@
-# placeholder
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling: header */
+header {
+    background-color: #f8f9fa;
+    padding: 2em;
+    text-align: center;
+}
+
+header img {
+    max-width: 150px;
+    margin-bottom: 1em;
+}
+
+/* Styling: mission */
+#mission {
+    padding: 4em;
+    text-align: center;
+    background-color: #e9eff1;
+}
+
+#mission img {
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+/* Styling: services */
+#services {
+    padding: 4em;
+    text-align: center;
+}
+
+#services img {
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+/* Styling: contact  */
+#contact {
+    padding: 4em;
+    text-align: center;
+    background-color: #e9eff1;
+}
+
+/* Styling: footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 2em;
+    text-align: center;
+}
+
+/* Spacing and styling: text elements */
+h1, h2, p, a {
+    margin-bottom: 1em;
+    color: #333;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
