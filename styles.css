@@ -25,7 +25,7 @@ header {
 }
 
 header h1 {
-    font-size: 2em;
+    font-size: 2.2em;
 }
 
 nav ul {
@@ -43,11 +43,12 @@ nav ul li a {
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 5px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
     background: #333;
+    color: #f9f9f9;
 }
 
 /* Section styles */
@@ -57,31 +58,58 @@ section {
 }
 
 section#mission {
-    background: #fff;
+    background: #e2f3f5;
 }
 
 /* Service section styles */
-.service {
-    margin: 3em 0;
-    text-align: left;
-    background: #fff;
+.service-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 2em;
+}
+
+.service-card {
+    background: #ffffff;
     border-radius: 8px;
-    padding: 20px;
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    text-align: left;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.service:hover {
+.service-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.service h3 {
-    font-size: 1.8em;
-    margin-bottom: 1em;
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    margin: 1em;
     color: #333;
 }
 
-.service p {
+.service-card p {
+    margin: 1em;
     color: #555;
+}
+
+.left-align h3,
+.left-align p {
+    text-align: left;
+}
+
+.right-align h3,
+.right-align p {
+    text-align: right;
 }
 
 /* Footer styles */
@@ -103,6 +131,11 @@ footer nav ul li {
 
 footer nav ul li a {
     color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #f9f9f9;
 }
 
 /* Media queries for responsiveness */
@@ -116,7 +149,7 @@ footer nav ul li a {
         margin: 10px 0;
     }
 
-    .service {
-        text-align: center;
+    .service-grid {
+        justify-content: space-around;
     }
 }
