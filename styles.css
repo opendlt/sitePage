@@ -74,7 +74,7 @@ section#mission {
     background: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    text-align: left;
+    text-align: center;
     width: 300px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -104,12 +104,12 @@ section#mission {
 
 .left-align h3,
 .left-align p {
-    text-align: left;
+    text-align: center;
 }
 
 .right-align h3,
 .right-align p {
-    text-align: right;
+    text-align: center;
 }
 
 /* Footer styles */
