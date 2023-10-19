@@ -59,10 +59,25 @@ header h1 {
     height: 3px;
     margin: 5px;
     background-color: #fff;
+    transition: 0.4s;
 }
 
-#menuToggle input:checked ~ ul {
-    display: block;
+#menuToggle input:checked + span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+#menuToggle input:checked + span:nth-child(2) {
+    opacity: 0;
+}
+
+#menuToggle input:checked + span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+#menuToggle input:checked + span + ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #menuToggle ul {
@@ -98,7 +113,7 @@ section#mission {
     color: #333;
     font-weight: bold;
     font-size: 1.2em;
-    padding: 5em 2em;
+    padding: 3em 2em; /* Adjusted padding */
 }
 
 /* Service section styles */
@@ -126,7 +141,7 @@ section#mission {
 }
 
 .service-card img {
-    width: 100%;
+    width: calc(100% - 20px); /* Adjusted width */
     max-height: 150px; /* Reduced height */
     object-fit: cover;
     padding: 10px; /* Added padding */
