@@ -102,40 +102,12 @@ section#mission {
     color: #555;
 }
 
-.left-align h3,
-.left-align p {
-    text-align: center;
-}
-
-.right-align h3,
-.right-align p {
-    text-align: center;
-}
-
 /* Footer styles */
 footer {
     background: #1a1a1a;
     color: #fff;
-    padding: 2em 2em;
+    padding: 1em 2em;
     text-align: center;
-}
-
-footer nav ul {
-    margin-bottom: 1em;
-}
-
-footer nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-footer nav ul li a {
-    color: #fff;
-    transition: color 0.3s ease;
-}
-
-footer nav ul li a:hover {
-    color: #f9f9f9;
 }
 
 /* Media queries for responsiveness */
