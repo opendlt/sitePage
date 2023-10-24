@@ -1,4 +1,4 @@
-# Welcome to openDLT.org: Your Hub for Blockchain Innovation
+**Welcome to openDLT.org: Your Hub for Blockchain Innovation**
 
 openDLT.org is a dynamic repository of open-source projects, encompassing a diverse array of frameworks, standards, tools, decentralized applications (dApps), and libraries, all meticulously crafted to bolster the development of blockchain-based distributed ledger solutions.
 
