@@ -845,17 +845,54 @@
         grid-template-columns: 1fr;
     }
 
+    .blockchain-item {
+        padding: var(--space-4);
+        gap: var(--space-3);
+    }
+
+    .blockchain-logo {
+        width: 32px;
+        height: 32px;
+    }
+
     .blockchain-logos {
         justify-content: flex-start;
+        gap: var(--space-2);
+    }
+
+    .blockchain-logos img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .layer-items {
+        gap: var(--space-2);
+    }
+
+    .layer-item {
+        font-size: 0.8rem;
+        padding: var(--space-1) var(--space-2);
     }
 
     .cta-title {
         font-size: 2.5rem;
+        line-height: 1.1;
+    }
+
+    .cta-description {
+        font-size: 1.125rem;
     }
 
     .cta-actions {
         flex-direction: column;
         align-items: center;
+        gap: var(--space-3);
+    }
+
+    .cta-actions .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
     }
 
     .cta-stats {
@@ -873,25 +910,14 @@
         gap: var(--space-4);
         text-align: center;
     }
-}
 
-@media (max-width: 480px) {
-    .code-tabs {
-        flex-direction: column;
-    }
-
-    .code-tab {
-        text-align: left;
-    }
-
-    .dev-feature {
-        flex-direction: column;
-        text-align: center;
+    .privacy-features {
+        margin: var(--space-6) 0;
     }
 
     .privacy-feature {
-        flex-direction: column;
-        text-align: center;
+        padding: var(--space-3);
+        gap: var(--space-3);
     }
 
     .disclosure-demo {
@@ -900,6 +926,115 @@
 
     .credential-original,
     .credential-disclosed {
+        max-width: 100%;
         padding: var(--space-4);
+    }
+}
+
+@media (max-width: 480px) {
+    .code-tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+
+    .code-tab {
+        text-align: left;
+        border-bottom: 1px solid var(--gray-200);
+        border-radius: 0;
+    }
+
+    .code-tab:last-child {
+        border-bottom: none;
+    }
+
+    .code-block pre {
+        padding: var(--space-4);
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .dev-feature {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-4);
+    }
+
+    .privacy-feature {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-3);
+        gap: var(--space-2);
+    }
+
+    .privacy-feature .feature-icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .disclosure-demo {
+        gap: var(--space-3);
+    }
+
+    .credential-original,
+    .credential-disclosed {
+        padding: var(--space-3);
+        max-width: 100%;
+    }
+
+    .credential-field {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-1);
+    }
+
+    .field-label,
+    .field-value {
+        font-size: 0.875rem;
+    }
+
+    .disclosure-arrow {
+        flex-direction: column;
+        gap: var(--space-1);
+        font-size: 0.8rem;
+    }
+
+    .disclosure-arrow svg {
+        width: 20px;
+        height: 20px;
+        transform: rotate(90deg);
+    }
+
+    .cta-title {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+
+    .blockchain-logos {
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+    }
+
+    .more-indicator {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-top: var(--space-2);
+    }
+
+    .vdk-architecture {
+        margin-top: var(--space-8);
+    }
+
+    .diagram-layer {
+        padding: var(--space-4);
+        margin-bottom: var(--space-3);
+    }
+
+    .layer-title {
+        font-size: 1.125rem;
+    }
+
+    .layer-subtitle {
+        font-size: 0.8rem;
     }
 }

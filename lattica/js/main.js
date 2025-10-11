@@ -155,7 +155,7 @@ function initializeScrollAnimations() {
             easing: 'ease-out-cubic',
             once: true,
             offset: 100,
-            disable: 'mobile'
+            disable: window.innerWidth < 768 ? true : false
         });
     }
 
