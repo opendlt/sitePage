@@ -1,31 +1,155 @@
-**Welcome to openDLT.org: Your Hub for Blockchain Innovation**
+# OpenDLT Website
 
-openDLT.org is a dynamic repository of open-source projects, encompassing a diverse array of frameworks, standards, tools, decentralized applications (dApps), and libraries, all meticulously crafted to bolster the development of blockchain-based distributed ledger solutions.
+Modern, responsive website showcasing OpenDLT's ecosystem of decentralized ledger technologies and developer tools.
 
-**Our Mission**
+## 🚀 Live Site
 
-At openDLT, our mission is to revolutionize the infrastructure and standards essential for developing robust blockchain systems and applications. We envision openDLT.org as a central hub, where various distributed ledger frameworks and libraries converge, facilitating developers with enriched tools and resources. This enables the creation of blockchain-enabled business solutions that enhance efficiency, performance, and transactional integrity across business processes.
+Visit: [opendlt.org](https://opendlt.github.io/opendlt-site)
 
-**Our Services**
+## ✨ Features
 
-1. **Custom Blockchain App Development**
-   - At openDLT, we specialize in full-cycle development, delivering products meticulously designed to secure transactions, manage digital assets, and safeguard your ecosystem.
+- **Modern Design**: Clean, developer-focused aesthetics with dark theme
+- **Responsive Layout**: Optimized for all devices and screen sizes
+- **Smooth Animations**: Scroll-based animations using AOS library
+- **Interactive Components**: Tabbed SDK showcase, code examples, modals
+- **Performance Optimized**: Lazy loading, efficient animations, mobile-first approach
+- **Accessibility**: WCAG compliant with keyboard navigation support
 
-2. **Smart Contracts Development**
-   - Mastery in automation allows us to develop smart contracts that optimize services, ensuring streamlined operations and fortified against fraudulent transactions.
+## 🛠 Technology Stack
 
-3. **Crypto Exchange and Wallet Development**
-   - Our adept team crafts secure, user-friendly cryptocurrency wallets and exchange apps, ensuring an exceptional user experience complemented by unparalleled customer support.
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Animations**: AOS (Animate On Scroll)
+- **Icons**: Custom SVG icon system
+- **Hosting**: GitHub Pages
+- **Build**: Static site generation
 
-4. **Decentralized (dApp) Development**
-   - We deploy cutting-edge decentralized applications, enabling clients to leverage opportunities in cryptocurrency, advanced supply chain data tracking, and eliminating intermediaries.
+## 📁 Project Structure
 
-5. **Non-Fungible Token (NFT) Development**
-   - We specialize in transforming digital assets into unique NFTs, providing comprehensive guidance on leveraging NFT technology optimally.
+```
+opendlt-site/
+├── index.html              # Main website page
+├── styles/
+│   ├── main.css            # Core styles and layout
+│   ├── animations.css      # Animation definitions
+│   └── components.css      # UI component styles
+├── scripts/
+│   └── main.js            # Interactive functionality
+├── assets/
+│   └── icons/             # SVG icon collection
+├── favicon.ico            # Site favicon
+└── README.md             # Project documentation
+```
 
-6. **SDKs and Client Libraries**
-   - We develop Software Development Kits (SDKs) across a multitude of languages, making Distributed Ledger Technology (DLT) more accessible to a broader spectrum of software developers and engineers.
+## 🎨 Design System
 
-**Why openDLT?**
+### Color Palette
+- **Primary**: `#0ea5e9` (Sky Blue)
+- **Secondary**: `#8b5cf6` (Purple)
+- **Accent**: `#22c55e` (Green)
+- **Background**: `#0f172a` (Dark Blue)
+- **Text Primary**: `#e2e8f0` (Light Gray)
+- **Text Secondary**: `#94a3b8` (Medium Gray)
 
-Choosing openDLT equips businesses with the necessary frameworks and tools to innovate and enhance their business processes comprehensively. By leveraging our resources, businesses can seamlessly integrate blockchain technology, driving improvements in efficiency, performance, and transactional reliability. Join us in navigating the frontier of blockchain innovation at openDLT.org.
+### Typography
+- **Primary Font**: Inter (Sans-serif)
+- **Code Font**: JetBrains Mono (Monospace)
+
+## 🚀 Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/opendlt/opendlt-site.git
+   cd opendlt-site
+   ```
+
+2. Serve locally:
+   ```bash
+   # Using Python
+   python -m http.server 8000
+
+   # Using Node.js
+   npx serve .
+
+   # Using Live Server (VS Code extension)
+   # Right-click index.html -> "Open with Live Server"
+   ```
+
+3. Open `http://localhost:8000` in your browser
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: `< 768px`
+- **Tablet**: `768px - 1024px`
+- **Desktop**: `> 1024px`
+
+## 🔧 Customization
+
+### Adding New SDKs
+
+To add a new programming language SDK:
+
+1. Add language logo to `assets/icons/`
+2. Update the SDK tabs in `index.html`
+3. Add corresponding tab content with code examples
+4. Include language-specific styling if needed
+
+### Modifying Animations
+
+Animations are defined in `styles/animations.css`. Key animation classes:
+
+- `.fade-in-up` - Fade in with upward motion
+- `.slide-in-left/right` - Slide animations
+- `.typing-animation` - Typewriter effect
+- `.pulse-animation` - Pulsing effect
+- `.hover-lift` - Hover lift effect
+
+### Color Customization
+
+Update CSS custom properties in `styles/main.css`:
+
+```css
+:root {
+  --primary-color: #0ea5e9;
+  --secondary-color: #8b5cf6;
+  --accent-color: #22c55e;
+  /* ... other colors */
+}
+```
+
+## 📊 Performance Features
+
+- **Lazy Loading**: Images load when entering viewport
+- **Optimized Animations**: Respect `prefers-reduced-motion`
+- **Efficient JavaScript**: Debounced scroll events
+- **Minimal Dependencies**: Only AOS library for animations
+- **Compressed Assets**: Optimized SVG icons
+
+## 🌐 SEO & Meta Tags
+
+The site includes comprehensive meta tags for:
+- Open Graph (social sharing)
+- Twitter Cards
+- SEO optimization
+- Mobile viewport configuration
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Test responsiveness across devices
+5. Submit a pull request
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+## 🔗 Links
+
+- **Main Site**: [opendlt.org](https://opendlt.github.io/opendlt-site)
+- **GitHub**: [github.com/opendlt](https://github.com/opendlt)
+- **Lattica Project**: [lattica.id](https://opendlt.github.io/lattica-site)
+
+---
+
+Built with ❤️ by the OpenDLT team

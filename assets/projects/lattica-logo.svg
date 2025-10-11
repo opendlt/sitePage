@@ -1,0 +1,43 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="latticaLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="latticaCenterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer ring with gradient -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="url(#latticaLogoGradient)" stroke-width="4"/>
+
+  <!-- Inner identity core -->
+  <circle cx="32" cy="32" r="12" fill="url(#latticaLogoGradient)" opacity="0.8"/>
+
+  <!-- Center white circle representing universal identity -->
+  <circle cx="32" cy="32" r="6" fill="url(#latticaCenterGradient)"/>
+
+  <!-- Cross-chain connection lines -->
+  <path d="M8 32L56 32" stroke="url(#latticaLogoGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M32 8L32 56" stroke="url(#latticaLogoGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M13.5 13.5L50.5 50.5" stroke="url(#latticaLogoGradient)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M50.5 13.5L13.5 50.5" stroke="url(#latticaLogoGradient)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Connection nodes at cardinal points -->
+  <circle cx="8" cy="32" r="3" fill="url(#latticaLogoGradient)"/>
+  <circle cx="56" cy="32" r="3" fill="url(#latticaLogoGradient)"/>
+  <circle cx="32" cy="8" r="3" fill="url(#latticaLogoGradient)"/>
+  <circle cx="32" cy="56" r="3" fill="url(#latticaLogoGradient)"/>
+
+  <!-- Corner connection nodes -->
+  <circle cx="13.5" cy="13.5" r="2" fill="url(#latticaLogoGradient)" opacity="0.8"/>
+  <circle cx="50.5" cy="13.5" r="2" fill="url(#latticaLogoGradient)" opacity="0.8"/>
+  <circle cx="13.5" cy="50.5" r="2" fill="url(#latticaLogoGradient)" opacity="0.8"/>
+  <circle cx="50.5" cy="50.5" r="2" fill="url(#latticaLogoGradient)" opacity="0.8"/>
+
+  <!-- Lattica text integrated into design -->
+  <text x="32" y="38" text-anchor="middle" fill="url(#latticaLogoGradient)" font-size="8" font-weight="bold" font-family="Inter, sans-serif">L</text>
+</svg>

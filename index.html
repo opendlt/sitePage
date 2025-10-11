@@ -1,108 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>openDLT</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>OpenDLT - Decentralized Development Tools</title>
+    <meta name="description" content="Multi-language SDKs and development tools for decentralized applications">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/components.css">
 </head>
-
 <body>
-
-    <header>
-        <div class="logo-title">
-            <img src="assets/logo2.png" alt="openDLT Logo" class="logo">       
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <p>Loading OpenDLT...</p>
         </div>
-        <nav>
-            <div id="menuToggle">
-                <input type="checkbox" />
-                <div class="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <img src="assets/icons/opendlt-logo.svg" alt="OpenDLT" class="logo">
                 </div>
-                <ul id="menu">
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#sdks">SDKs</a>
+                    <a href="https://github.com/opendlt" class="btn-primary">GitHub</a>
+                </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <section id="mission">
-        <h2>Our Mission</h2>
-        <p>
-            Empowering Blockchain Innovation via Safe and Turnkey Solutions
-        </p>
-    </section>
-
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-        
-            <div class="service-card">
-                <img src="assets/service1.png" alt="Custom Blockchain App Development" class="service-img">
-                <h3>Custom Blockchain App Development</h3>
-                <p>Secure, robust solutions for enhanced transaction and asset management.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Building the Future of <span class="gradient-text">Decentralized Applications</span></h1>
+                <p class="hero-subtitle">Multi-language SDKs and development tools for the Accumulate blockchain ecosystem</p>
             </div>
-            
-            <div class="service-card">
-                <img src="assets/service2.png" alt="Smart Contracts Development" class="service-img">
-                <h3>Smart Contracts Development</h3>
-                <p>Efficient, secure smart contracts for streamlined operations.</p>
-            </div>
-            
-            <div class="service-card">
-                <img src="assets/service3.png" alt="Crypto Exchange, Wallet Development" class="service-img">
-                <h3>Crypto Exchange and Wallet Development</h3>
-                <p>User-friendly, secure crypto wallets and exchange integration services.</p>
-            </div>
-            
-            <div class="service-card">
-                <img src="assets/service4.png" alt="dApplication Development" class="service-img">
-                <h3>Decentralized (dApp) Development</h3>
-                <p>Unlocking new potentials in cryptocurrency and supply chains.</p>
-            </div>
-            
-            <div class="service-card">
-                <img src="assets/service5.png" alt="NFT Development" class="service-img">
-                <h3>Non-Fungible Token (NFT) Development</h3>
-                <p>Expert transformation of assets into unique multi-chain NFTs.</p>
-            </div>
-            
-            <div class="service-card">
-                <img src="assets/service6.png" alt="SDKs and Client Libraries" class="service-img">
-                <h3>SDKs and Client Libraries</h3>
-                <p>Diverse SDKs for accessible, smooth development processes.</p>
-            </div>
-            
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Email us at <a href="mailto:info@openDLT.org">info@openDLT.org</a></p>
-        <p>Visit our GitHub: <a href="https://github.com/opendlt" target="_blank">openDLT GitHub</a></p>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Featured Project</h2>
+                <p>Universal decentralized identity system</p>
+            </div>
+
+            <div class="project-showcase" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="assets/projects/lattica-logo.svg" alt="Lattica Universal DIDs">
+                    </div>
+                    <div class="project-info">
+                        <h3>Lattica Universal DIDs</h3>
+                        <p>World's first universal cross-chain identity system. One DID, every blockchain.</p>
+                        <div class="project-tags">
+                            <span class="tag">Universal</span>
+                            <span class="tag">Cross-chain</span>
+                            <span class="tag">Identity</span>
+                            <span class="tag">Privacy</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="projects/lattica/" class="btn-primary">Explore Lattica</a>
+                            <a href="https://github.com/opendlt/lattica-did" class="btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>© 2023 openDLT.org — Revolutionizing Blockchain Development</p>
+    <!-- SDKs Section -->
+    <section id="sdks" class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Multi-Language SDKs</h2>
+                <p>Choose your preferred language to start building</p>
+            </div>
+
+            <div class="sdk-tabs">
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="python">
+                        <img src="assets/langs/python.svg" alt="Python">
+                        Python
+                    </button>
+                    <button class="tab-btn" data-tab="dart">
+                        <img src="assets/langs/dart.svg" alt="Dart">
+                        Dart
+                    </button>
+                    <button class="tab-btn" data-tab="rust">
+                        <img src="assets/langs/rust.svg" alt="Rust">
+                        Rust
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="python">
+                    <div class="sdk-content">
+                        <div class="sdk-info">
+                            <h3>Accumulate Python SDK</h3>
+                            <p>Full-featured Python SDK for building applications on the Accumulate network. Perfect for rapid development and prototyping.</p>
+                            <ul class="feature-list">
+                                <li>Complete Accumulate network integration</li>
+                                <li>Identity and account management</li>
+                                <li>Transaction creation and signing</li>
+                                <li>Key management utilities</li>
+                                <li>Async/await support</li>
+                                <li>Type hints included</li>
+                            </ul>
+                            <a href="https://github.com/opendlt/accumulate-python-sdk" class="btn-primary" target="_blank">View Python SDK</a>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>from accumulate import Client
+
+# Initialize Accumulate client
+client = Client("https://mainnet.accumulatenetwork.io")
+
+# Create identity
+identity = client.create_identity()
+print(f"Identity: {identity.url}")
+
+# Create account
+account = identity.create_account("my-account")
+print(f"Account: {account.url}")</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="dart">
+                    <div class="sdk-content">
+                        <div class="sdk-info">
+                            <h3>Accumulate Dart SDK</h3>
+                            <p>Native Dart SDK for building Accumulate applications. Perfect for Flutter mobile apps and cross-platform development.</p>
+                            <ul class="feature-list">
+                                <li>Flutter and mobile optimized</li>
+                                <li>Accumulate network integration</li>
+                                <li>Identity and account management</li>
+                                <li>Transaction handling</li>
+                                <li>Cross-platform support</li>
+                                <li>Async/await patterns</li>
+                            </ul>
+                            <a href="https://github.com/opendlt/accumulate-dart-sdk" class="btn-primary" target="_blank">View Dart SDK</a>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>import 'package:accumulate/accumulate.dart';
+
+// Initialize Accumulate client
+final client = AccumulateClient(
+  endpoint: 'https://mainnet.accumulatenetwork.io'
+);
+
+// Create identity
+final identity = await client.createIdentity();
+print('Identity: ${identity.url}');
+
+// Create account
+final account = await identity.createAccount('my-account');
+print('Account: ${account.url}');</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="rust">
+                    <div class="sdk-content">
+                        <div class="sdk-info">
+                            <h3>Accumulate Rust SDK</h3>
+                            <p>High-performance Rust SDK for building robust Accumulate applications. Ideal for system-level integration and performance-critical applications.</p>
+                            <ul class="feature-list">
+                                <li>Zero-cost abstractions</li>
+                                <li>Memory safety guarantees</li>
+                                <li>High-performance networking</li>
+                                <li>Accumulate network integration</li>
+                                <li>Identity and transaction management</li>
+                                <li>Comprehensive error handling</li>
+                            </ul>
+                            <a href="https://github.com/opendlt/accumulate-rust-sdk" class="btn-primary" target="_blank">View Rust SDK</a>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>use accumulate::{Client, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // Initialize Accumulate client
+    let client = Client::new(
+        "https://mainnet.accumulatenetwork.io"
+    ).await?;
+
+    // Create identity
+    let identity = client.create_identity().await?;
+    println!("Identity: {}", identity.url());
+
+    // Create account
+    let account = identity
+        .create_account("my-account").await?;
+    println!("Account: {}", account.url());
+
+    Ok(())
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/icons/opendlt-logo.svg" alt="OpenDLT" class="logo">
+                </div>
+                <div class="footer-links">
+                    <a href="projects/lattica/">Lattica</a>
+                    <a href="https://github.com/opendlt">GitHub</a>
+                    <a href="#sdks">SDKs</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/opendlt" class="social-link">
+                        <img src="assets/icons/github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://twitter.com/opendlt" class="social-link">
+                        <img src="assets/icons/twitter.svg" alt="Twitter">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OpenDLT. Building the decentralized future.</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // JavaScript to toggle the menu visibility
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            var menu = document.getElementById('menu');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
+        // Simple animation system
+        window.AOS = {
+            init: function() {
+                const elements = document.querySelectorAll('[data-aos]');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const delay = entry.target.getAttribute('data-aos-delay') || 0;
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }, parseInt(delay));
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                elements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'all 0.8s ease';
+                    observer.observe(el);
+                });
             }
-        });
+        };
+
     </script>
-
+    <script src="scripts/main.js"></script>
 </body>
-
 </html>

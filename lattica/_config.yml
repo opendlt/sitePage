@@ -1,0 +1,57 @@
+# GitHub Pages Configuration
+title: "Lattica Universal DIDs"
+description: "World's first universal cross-chain identity system. One DID, every blockchain."
+url: "https://opendlt.github.io"
+baseurl: "/lattica-site"
+
+# Theme
+theme: null
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .git
+  - .gitignore
+
+# Include files that GitHub Pages normally excludes
+include:
+  - _redirects
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# SEO settings
+author: "Lattica Team"
+twitter:
+  username: lattica
+social:
+  name: Lattica
+  links:
+    - https://github.com/opendlt
+    - https://twitter.com/lattica
+
+# Site verification (add your codes here)
+google_site_verification: ""
+bing_site_verification: ""
+
+# Analytics (add your tracking IDs here)
+google_analytics: ""
+
+# Social media defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: "/assets/lattica-logo.svg"
