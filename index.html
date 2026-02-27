@@ -232,7 +232,7 @@
                   <li>Identity, token, and data account operations</li>
                   <li>Full type hints and Pydantic models</li>
                 </ul>
-                <a href="https://github.com/opendlt/accumulate-python-sdk" class="btn-primary" target="_blank" rel="noopener">View Python SDK</a>
+                <a href="https://pypi.org/project/accumulate-sdk-opendlt/" class="btn-primary" target="_blank" rel="noopener">View Python SDK</a>
               </div>
               <div class="code-block" data-language="python">
                 <pre><code>from accumulate import Accumulate, Ed25519KeyPair, SmartSigner
@@ -258,10 +258,10 @@ signer = SmartSigner(client.v3, kp, lid)
                   <li>Full TypeScript definitions</li>
                   <li>Promise-based async API</li>
                 </ul>
-                <a href="https://github.com/opendlt/accumulate-js-sdk" class="btn-primary" target="_blank" rel="noopener">View JS SDK</a>
+                <a href="https://github.com/opendlt/accumulate-javascript-sdk" class="btn-primary" target="_blank" rel="noopener">View JS SDK</a>
               </div>
               <div class="code-block" data-language="javascript">
-                <pre><code>import { Accumulate, Ed25519KeyPair, SmartSigner } from 'accumulate-sdk';
+                <pre><code>import { Accumulate, Ed25519KeyPair, SmartSigner } from 'accumulate.js';
 
 const client = Accumulate.forKermit();
 const kp = Ed25519KeyPair.generate();
@@ -284,7 +284,7 @@ const signer = new SmartSigner(client, kp.toKey(), lid);
                   <li>Ed25519 keypair generation</li>
                   <li>Comprehensive error types</li>
                 </ul>
-                <a href="https://github.com/opendlt/accumulate-rust-sdk" class="btn-primary" target="_blank" rel="noopener">View Rust SDK</a>
+                <a href="https://crates.io/crates/accumulate-sdk" class="btn-primary" target="_blank" rel="noopener">View Rust SDK</a>
               </div>
               <div class="code-block" data-language="rust">
                 <pre><code>use accumulate_sdk::{AccumulateClient, Options};
@@ -311,10 +311,10 @@ let keypair = AccumulateClient::generate_keypair();
                   <li>Async/await patterns</li>
                   <li>Null-safe API</li>
                 </ul>
-                <a href="https://github.com/opendlt/accumulate-dart-sdk" class="btn-primary" target="_blank" rel="noopener">View Dart SDK</a>
+                <a href="https://pub.dev/packages/opendlt_accumulate" class="btn-primary" target="_blank" rel="noopener">View Dart SDK</a>
               </div>
               <div class="code-block" data-language="dart">
-                <pre><code>import 'package:accumulate_sdk/accumulate_sdk.dart';
+                <pre><code>import 'package:opendlt_accumulate/opendlt_accumulate.dart';
 
 final client = Accumulate.network(NetworkEndpoint.testnet);
 final kp = await Ed25519KeyPair.generate();
@@ -337,7 +337,7 @@ final signer = SmartSigner(client, kp, lid);
                   <li>Async Task-based API</li>
                   <li>NuGet package available</li>
                 </ul>
-                <a href="https://github.com/opendlt/accumulate-csharp-sdk" class="btn-primary" target="_blank" rel="noopener">View C# SDK</a>
+                <a href="https://www.nuget.org/packages/Acme.Net.Sdk" class="btn-primary" target="_blank" rel="noopener">View C# SDK</a>
               </div>
               <div class="code-block" data-language="csharp">
                 <pre><code>using Accumulate.SDK;

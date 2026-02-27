@@ -70,11 +70,11 @@ All tokens are defined in `styles/tokens.css` as CSS custom properties.
 
 | Language | Install |
 |----------|---------|
-| Python | `pip install accumulate-sdk` |
-| JavaScript | `npm install accumulate-sdk` |
+| Python | `pip install accumulate-sdk-opendlt` |
+| JavaScript | `npm install accumulate.js` |
 | Rust | `cargo add accumulate-sdk` |
-| Dart | `dart pub add accumulate_sdk` |
-| C# | `dotnet add package Accumulate.SDK` |
+| Dart | `dart pub add opendlt_accumulate` |
+| C# | `dotnet add package Acme.Net.Sdk` |
 
 ## Local Development
 
