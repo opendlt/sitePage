@@ -1,281 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenDLT - Decentralized Development Tools</title>
-    <meta name="description" content="Multi-language SDKs and development tools for decentralized applications">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenDLT - Open-Source Tools for the Accumulate Protocol</title>
+  <meta name="description" content="SDKs, developer tools, and research projects for the Accumulate blockchain. Build with Python, JavaScript, Rust, Dart, or C#.">
+  <meta property="og:title" content="OpenDLT - Open-Source Tools for the Accumulate Protocol">
+  <meta property="og:description" content="SDKs, developer tools, and research projects for the Accumulate blockchain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://opendlt.org">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="styles/components.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loader"></div>
-            <p>Loading OpenDLT...</p>
-        </div>
-    </div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-logo">
-                    <img src="assets/icons/opendlt-logo.svg" alt="OpenDLT" class="logo">
-                </div>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#sdks">SDKs</a>
-                    <a href="https://github.com/opendlt" class="btn-primary">GitHub</a>
-                </div>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-content">
+        <a href="/" class="nav-logo" aria-label="OpenDLT Home">
+          <img src="assets/icons/opendlt-logo.svg" alt="OpenDLT" width="140" height="32">
+        </a>
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              Tooling
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="/tooling/sdks/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                SDKs
+              </a>
+              <a href="/tooling/studio/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Studio
+              </a>
+              <a href="/tooling/devnet/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
+                DevNet
+              </a>
             </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              Projects
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="/projects/authrix/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Authrix
+              </a>
+              <a href="/projects/infrix/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                Infrix
+              </a>
+              <a href="/projects/accuboard/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                Accuboard
+              </a>
+            </div>
+          </div>
+          <a href="/about/" class="nav-link">About</a>
+          <a href="/docs/" class="nav-link">Docs</a>
+          <a href="https://studio.opendlt.org" class="nav-cta" target="_blank" rel="noopener">
+            Open Studio
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
-    </nav>
+        <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <span class="mobile-group-label">Tooling</span>
+    <a href="/tooling/sdks/" class="mobile-sublink">SDKs</a>
+    <a href="/tooling/studio/" class="mobile-sublink">Studio</a>
+    <a href="/tooling/devnet/" class="mobile-sublink">DevNet</a>
+    <span class="mobile-group-label">Projects</span>
+    <a href="/projects/authrix/" class="mobile-sublink">Authrix</a>
+    <a href="/projects/infrix/" class="mobile-sublink">Infrix</a>
+    <a href="/projects/accuboard/" class="mobile-sublink">Accuboard</a>
+    <a href="/about/" class="mobile-link">About</a>
+    <a href="/docs/" class="mobile-link">Docs</a>
+    <a href="https://studio.opendlt.org" class="nav-cta" target="_blank" rel="noopener">Open Studio</a>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h1>Building the Future of <span class="gradient-text">Decentralized Applications</span></h1>
-                <p class="hero-subtitle">Multi-language SDKs and development tools for the Accumulate blockchain ecosystem</p>
-            </div>
+    <section class="hero hero-decorated">
+      <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+          <h1>Open-Source Tools for the <span class="gradient-text">Accumulate Protocol</span></h1>
+          <p class="hero-subtitle">Multi-language SDKs, a browser IDE, a local DevNet, and research projects &mdash; everything you need to build on Accumulate.</p>
+          <div class="hero-actions">
+            <a href="https://studio.opendlt.org" class="btn-primary btn-lg" target="_blank" rel="noopener">
+              Open Accumulate Studio
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="/tooling/sdks/" class="btn-secondary btn-lg">Explore SDKs</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Featured Project</h2>
-                <p>Universal decentralized identity system</p>
-            </div>
-
-            <div class="project-showcase" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <img src="assets/projects/lattica-logo.svg" alt="Lattica Universal DIDs">
-                    </div>
-                    <div class="project-info">
-                        <h3>Lattica Universal DIDs</h3>
-                        <p>World's first universal cross-chain identity system. One DID, every blockchain.</p>
-                        <div class="project-tags">
-                            <span class="tag">Universal</span>
-                            <span class="tag">Cross-chain</span>
-                            <span class="tag">Identity</span>
-                            <span class="tag">Privacy</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="projects/lattica/" class="btn-primary">Explore Lattica</a>
-                            <a href="https://github.com/opendlt/lattica-did" class="btn-secondary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Stats Bar -->
+    <section class="section" style="padding-top:0;padding-bottom:0;">
+      <div class="container">
+        <div class="stats-bar" data-aos-stagger="150">
+          <div class="card card-stat">
+            <div class="stat-number" data-count-to="5" data-count-suffix="+">0+</div>
+            <div class="stat-label">SDK Languages</div>
+          </div>
+          <div class="card card-stat">
+            <div class="stat-number" data-count-to="3">0</div>
+            <div class="stat-label">R&amp;D Projects</div>
+          </div>
+          <div class="card card-stat">
+            <div class="stat-number" data-count-to="60" data-count-suffix="+">0+</div>
+            <div class="stat-label">Host Functions</div>
+          </div>
+          <div class="card card-stat">
+            <div class="stat-number" data-count-to="100" data-count-suffix="%">0%</div>
+            <div class="stat-label">Open Source</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- SDKs Section -->
-    <section id="sdks" class="section section-dark">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Multi-Language SDKs</h2>
-                <p>Choose your preferred language to start building</p>
-            </div>
-
-            <div class="sdk-tabs">
-                <div class="tab-nav">
-                    <button class="tab-btn active" data-tab="python">
-                        <img src="assets/langs/python.svg" alt="Python">
-                        Python
-                    </button>
-                    <button class="tab-btn" data-tab="dart">
-                        <img src="assets/langs/dart.svg" alt="Dart">
-                        Dart
-                    </button>
-                    <button class="tab-btn" data-tab="rust">
-                        <img src="assets/langs/rust.svg" alt="Rust">
-                        Rust
-                    </button>
-                </div>
-
-                <div class="tab-content active" id="python">
-                    <div class="sdk-content">
-                        <div class="sdk-info">
-                            <h3>Accumulate Python SDK</h3>
-                            <p>Full-featured Python SDK for building applications on the Accumulate network. Perfect for rapid development and prototyping.</p>
-                            <ul class="feature-list">
-                                <li>Complete Accumulate network integration</li>
-                                <li>Identity and account management</li>
-                                <li>Transaction creation and signing</li>
-                                <li>Key management utilities</li>
-                                <li>Async/await support</li>
-                                <li>Type hints included</li>
-                            </ul>
-                            <a href="https://github.com/opendlt/accumulate-python-sdk" class="btn-primary" target="_blank">View Python SDK</a>
-                        </div>
-                        <div class="code-example">
-                            <pre><code>from accumulate import Client
-
-# Initialize Accumulate client
-client = Client("https://mainnet.accumulatenetwork.io")
-
-# Create identity
-identity = client.create_identity()
-print(f"Identity: {identity.url}")
-
-# Create account
-account = identity.create_account("my-account")
-print(f"Account: {account.url}")</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="dart">
-                    <div class="sdk-content">
-                        <div class="sdk-info">
-                            <h3>Accumulate Dart SDK</h3>
-                            <p>Native Dart SDK for building Accumulate applications. Perfect for Flutter mobile apps and cross-platform development.</p>
-                            <ul class="feature-list">
-                                <li>Flutter and mobile optimized</li>
-                                <li>Accumulate network integration</li>
-                                <li>Identity and account management</li>
-                                <li>Transaction handling</li>
-                                <li>Cross-platform support</li>
-                                <li>Async/await patterns</li>
-                            </ul>
-                            <a href="https://github.com/opendlt/accumulate-dart-sdk" class="btn-primary" target="_blank">View Dart SDK</a>
-                        </div>
-                        <div class="code-example">
-                            <pre><code>import 'package:accumulate/accumulate.dart';
-
-// Initialize Accumulate client
-final client = AccumulateClient(
-  endpoint: 'https://mainnet.accumulatenetwork.io'
-);
-
-// Create identity
-final identity = await client.createIdentity();
-print('Identity: ${identity.url}');
-
-// Create account
-final account = await identity.createAccount('my-account');
-print('Account: ${account.url}');</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="rust">
-                    <div class="sdk-content">
-                        <div class="sdk-info">
-                            <h3>Accumulate Rust SDK</h3>
-                            <p>High-performance Rust SDK for building robust Accumulate applications. Ideal for system-level integration and performance-critical applications.</p>
-                            <ul class="feature-list">
-                                <li>Zero-cost abstractions</li>
-                                <li>Memory safety guarantees</li>
-                                <li>High-performance networking</li>
-                                <li>Accumulate network integration</li>
-                                <li>Identity and transaction management</li>
-                                <li>Comprehensive error handling</li>
-                            </ul>
-                            <a href="https://github.com/opendlt/accumulate-rust-sdk" class="btn-primary" target="_blank">View Rust SDK</a>
-                        </div>
-                        <div class="code-example">
-                            <pre><code>use accumulate::{Client, Result};
-
-#[tokio::main]
-async fn main() -> Result<()> {
-    // Initialize Accumulate client
-    let client = Client::new(
-        "https://mainnet.accumulatenetwork.io"
-    ).await?;
-
-    // Create identity
-    let identity = client.create_identity().await?;
-    println!("Identity: {}", identity.url());
-
-    // Create account
-    let account = identity
-        .create_account("my-account").await?;
-    println!("Account: {}", account.url());
-
-    Ok(())
-}</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Core Tools Triptych -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Developer Tooling</h2>
+          <p>Three pillars for building on Accumulate</p>
         </div>
+        <div class="grid-3" data-aos-stagger="150">
+          <!-- SDKs Card -->
+          <div class="card card-gradient-border hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Multi-Language SDKs</h3>
+            <p>Production-ready clients for Python, JavaScript, Rust, Dart, and C#. Create identities, sign transactions, and query the network in your preferred language.</p>
+            <div class="card-actions">
+              <a href="/tooling/sdks/" class="btn-primary btn-sm">Pick an SDK</a>
+            </div>
+          </div>
+          <!-- Studio Card -->
+          <div class="card card-accent hover-tilt">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Accumulate Studio</h3>
+            <p>A browser-based IDE with Monaco editor, multi-language code samples, an interactive action palette, and built-in SDK proxy. No install required.</p>
+            <div class="card-actions">
+              <a href="https://studio.opendlt.org" class="btn-primary btn-sm" target="_blank" rel="noopener">Open Studio</a>
+            </div>
+          </div>
+          <!-- DevNet Card -->
+          <div class="card card-tint-navy hover-glow-navy">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
+            </div>
+            <h3>DevNet Launcher</h3>
+            <p>Spin up a local Accumulate network in seconds with Docker. Full node, block explorer, and faucet &mdash; perfect for integration testing.</p>
+            <div class="card-actions">
+              <a href="/tooling/devnet/" class="btn-primary btn-sm">Run DevNet</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="assets/icons/opendlt-logo.svg" alt="OpenDLT" class="logo">
-                </div>
-                <div class="footer-links">
-                    <a href="projects/lattica/">Lattica</a>
-                    <a href="https://github.com/opendlt">GitHub</a>
-                    <a href="#sdks">SDKs</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/opendlt" class="social-link">
-                        <img src="assets/icons/github.svg" alt="GitHub">
-                    </a>
-                    <a href="https://twitter.com/opendlt" class="social-link">
-                        <img src="assets/icons/twitter.svg" alt="Twitter">
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 OpenDLT. Building the decentralized future.</p>
-            </div>
+    <!-- Quickstart Snippet -->
+    <section class="section section-teal">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Build Your First Transaction in 4 Lines</h2>
+          <p>Pick a language and start building</p>
         </div>
-    </footer>
+        <div class="tab-group" data-aos="fade-up" data-aos-delay="100" style="max-width:1000px;margin:0 auto;">
+          <div class="tab-nav">
+            <button class="tab-btn active" data-tab="qs-python">
+              <img src="assets/langs/python.svg" alt="" width="20" height="20"> Python
+            </button>
+            <button class="tab-btn" data-tab="qs-javascript">
+              <img src="assets/icons/javascript-logo.svg" alt="" width="20" height="20"> JavaScript
+            </button>
+            <button class="tab-btn" data-tab="qs-rust">
+              <img src="assets/langs/rust.svg" alt="" width="20" height="20"> Rust
+            </button>
+            <button class="tab-btn" data-tab="qs-dart">
+              <img src="assets/langs/dart.svg" alt="" width="20" height="20"> Dart
+            </button>
+            <button class="tab-btn" data-tab="qs-csharp">
+              <img src="assets/icons/csharp-logo.svg" alt="" width="20" height="20"> C#
+            </button>
+          </div>
 
-    <!-- Scripts -->
-    <script>
-        // Simple animation system
-        window.AOS = {
-            init: function() {
-                const elements = document.querySelectorAll('[data-aos]');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const delay = entry.target.getAttribute('data-aos-delay') || 0;
-                            setTimeout(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                            }, parseInt(delay));
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                });
+          <!-- Python -->
+          <div class="tab-content active" id="qs-python">
+            <div class="sdk-content">
+              <div class="sdk-info">
+                <h3>Accumulate Python SDK</h3>
+                <p>Full-featured async Python client for the Accumulate network. Type-hinted, with Ed25519 key management and smart signing.</p>
+                <ul class="feature-list">
+                  <li>Async/await with httpx transport</li>
+                  <li>Ed25519 key pair generation &amp; management</li>
+                  <li>SmartSigner for automatic nonce handling</li>
+                  <li>Identity, token, and data account operations</li>
+                  <li>Full type hints and Pydantic models</li>
+                </ul>
+                <a href="https://github.com/opendlt/accumulate-python-sdk" class="btn-primary" target="_blank" rel="noopener">View Python SDK</a>
+              </div>
+              <div class="code-block" data-language="python">
+                <pre><code>from accumulate import Accumulate, Ed25519KeyPair, SmartSigner
 
-                elements.forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(30px)';
-                    el.style.transition = 'all 0.8s ease';
-                    observer.observe(el);
-                });
-            }
-        };
+client = Accumulate("https://kermit.accumulatenetwork.io")
+kp = Ed25519KeyPair.generate()
+signer = SmartSigner(client.v3, kp, lid)
+# Ready to create identities and send transactions</code></pre>
+              </div>
+            </div>
+          </div>
 
-    </script>
-    <script src="scripts/main.js"></script>
+          <!-- JavaScript -->
+          <div class="tab-content" id="qs-javascript">
+            <div class="sdk-content">
+              <div class="sdk-info">
+                <h3>Accumulate JavaScript SDK</h3>
+                <p>Isomorphic JS/TS client that works in Node.js and browsers. Promise-based API with built-in key management.</p>
+                <ul class="feature-list">
+                  <li>Works in Node.js and browsers</li>
+                  <li>Ed25519 key pair generation</li>
+                  <li>SmartSigner with automatic nonce</li>
+                  <li>Full TypeScript definitions</li>
+                  <li>Promise-based async API</li>
+                </ul>
+                <a href="https://github.com/opendlt/accumulate-js-sdk" class="btn-primary" target="_blank" rel="noopener">View JS SDK</a>
+              </div>
+              <div class="code-block" data-language="javascript">
+                <pre><code>import { Accumulate, Ed25519KeyPair, SmartSigner } from 'accumulate-sdk';
+
+const client = Accumulate.forKermit();
+const kp = Ed25519KeyPair.generate();
+const signer = new SmartSigner(client, kp.toKey(), lid);
+// Ready to create identities and send transactions</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rust -->
+          <div class="tab-content" id="qs-rust">
+            <div class="sdk-content">
+              <div class="sdk-info">
+                <h3>Accumulate Rust SDK</h3>
+                <p>High-performance Rust client with zero-cost abstractions. Memory-safe networking with tokio async runtime.</p>
+                <ul class="feature-list">
+                  <li>Zero-cost abstractions</li>
+                  <li>Memory safety guarantees</li>
+                  <li>Tokio async runtime</li>
+                  <li>Ed25519 keypair generation</li>
+                  <li>Comprehensive error types</li>
+                </ul>
+                <a href="https://github.com/opendlt/accumulate-rust-sdk" class="btn-primary" target="_blank" rel="noopener">View Rust SDK</a>
+              </div>
+              <div class="code-block" data-language="rust">
+                <pre><code>use accumulate_sdk::{AccumulateClient, Options};
+
+let client = AccumulateClient::new_with_options(
+    "https://kermit.accumulatenetwork.io", Options::default()
+).await?;
+let keypair = AccumulateClient::generate_keypair();
+// Ready to create identities and send transactions</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dart -->
+          <div class="tab-content" id="qs-dart">
+            <div class="sdk-content">
+              <div class="sdk-info">
+                <h3>Accumulate Dart SDK</h3>
+                <p>Native Dart client optimized for Flutter. Build cross-platform mobile and desktop apps on Accumulate.</p>
+                <ul class="feature-list">
+                  <li>Flutter &amp; mobile optimized</li>
+                  <li>Cross-platform (iOS, Android, Web)</li>
+                  <li>Ed25519 key management</li>
+                  <li>Async/await patterns</li>
+                  <li>Null-safe API</li>
+                </ul>
+                <a href="https://github.com/opendlt/accumulate-dart-sdk" class="btn-primary" target="_blank" rel="noopener">View Dart SDK</a>
+              </div>
+              <div class="code-block" data-language="dart">
+                <pre><code>import 'package:accumulate_sdk/accumulate_sdk.dart';
+
+final client = Accumulate.network(NetworkEndpoint.testnet);
+final kp = await Ed25519KeyPair.generate();
+final signer = SmartSigner(client, kp, lid);
+// Ready to create identities and send transactions</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- C# -->
+          <div class="tab-content" id="qs-csharp">
+            <div class="sdk-content">
+              <div class="sdk-info">
+                <h3>Accumulate C# SDK</h3>
+                <p>.NET client for enterprise applications. Strongly typed models, async Task patterns, and NuGet package distribution.</p>
+                <ul class="feature-list">
+                  <li>.NET 6+ and .NET Standard 2.1</li>
+                  <li>Strongly-typed request/response models</li>
+                  <li>Ed25519 key pair generation</li>
+                  <li>Async Task-based API</li>
+                  <li>NuGet package available</li>
+                </ul>
+                <a href="https://github.com/opendlt/accumulate-csharp-sdk" class="btn-primary" target="_blank" rel="noopener">View C# SDK</a>
+              </div>
+              <div class="code-block" data-language="csharp">
+                <pre><code>using Accumulate.SDK;
+
+using var client = new Accumulate(
+    "https://kermit.accumulatenetwork.io");
+var kp = AccKeyPairGenerator
+    .GenerateSignatureKeyPair(SignatureType.ED25519);
+// Ready to create identities and send transactions</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Preview -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Research &amp; Development</h2>
+          <p>Incubating the next generation of decentralized infrastructure</p>
+        </div>
+        <div class="grid-3" data-aos-stagger="150">
+          <!-- Authrix -->
+          <div class="card card-featured">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+              <span class="badge badge-alpha">Alpha</span>
+            </div>
+            <h3>Authrix</h3>
+            <p>Universal cross-chain identity. One <code>did:authrix</code>, every blockchain. Privacy-preserving credentials with selective disclosure.</p>
+            <div class="progress-label"><span>Progress</span><span>72%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+            <div class="card-actions">
+              <a href="/projects/authrix/" class="btn-secondary btn-sm">Explore</a>
+            </div>
+          </div>
+          <!-- Infrix -->
+          <div class="card card-accent hover-lift">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+              <span class="badge badge-beta">Beta</span>
+            </div>
+            <h3>Infrix</h3>
+            <p>WASM smart contracts on Accumulate. Execute sandboxed WebAssembly modules with 60+ host functions and native token standards.</p>
+            <div class="progress-label"><span>Progress</span><span>60%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+            <div class="card-actions">
+              <a href="/projects/infrix/" class="btn-secondary btn-sm">Explore</a>
+            </div>
+          </div>
+          <!-- Accuboard -->
+          <div class="card card-glass hover-lift">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+              <span class="badge badge-concept">Concept</span>
+            </div>
+            <h3>Accuboard</h3>
+            <p>Oracle and verifiable compute layer. Trusted data feeds, verifiable random functions, and off-chain computation proofs on Accumulate.</p>
+            <div class="progress-label"><span>Progress</span><span>25%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
+            <div class="card-actions">
+              <a href="/projects/accuboard/" class="btn-secondary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community CTA -->
+    <section class="section section-dark-accent">
+      <div class="container">
+        <div class="hero-content" data-aos="fade-up" style="padding-top:0;">
+          <h2>Built in the Open</h2>
+          <p class="hero-subtitle">Every line of code is open-source. Contributions, issues, and feedback welcome.</p>
+          <div class="hero-actions">
+            <a href="https://github.com/opendlt" class="btn-primary btn-lg" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://discord.gg/accumulate" class="btn-secondary btn-lg" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.079-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.128c.12-.098.246-.198.373-.292a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg>
+              Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="logo-link">
+            <img src="assets/icons/opendlt-logo.svg" alt="OpenDLT" width="140" height="32">
+          </a>
+          <p>Open-source tools and SDKs for building on the Accumulate Protocol.</p>
+          <div class="footer-social">
+            <a href="https://github.com/opendlt" class="social-link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://discord.gg/accumulate" class="social-link" aria-label="Discord">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.079-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.128c.12-.098.246-.198.373-.292a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="https://twitter.com/AccumulateHQ" class="social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Tooling</h4>
+          <ul>
+            <li><a href="/tooling/sdks/">SDKs</a></li>
+            <li><a href="/tooling/studio/">Accumulate Studio</a></li>
+            <li><a href="/tooling/devnet/">DevNet Launcher</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Projects</h4>
+          <ul>
+            <li><a href="/projects/authrix/">Authrix</a></li>
+            <li><a href="/projects/infrix/">Infrix</a></li>
+            <li><a href="/projects/accuboard/">Accuboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="https://docs.accumulatenetwork.io" target="_blank" rel="noopener">Protocol Docs</a></li>
+            <li><a href="https://github.com/opendlt" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/about/">About OpenDLT</a></li>
+            <li><a href="https://discord.gg/accumulate" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="https://github.com/opendlt/opendlt-site/issues" target="_blank" rel="noopener">Contribute</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 OpenDLT. Open-source tools for the Accumulate ecosystem.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/main.js"></script>
+  <script src="scripts/tabs.js"></script>
+  <script src="scripts/copy-code.js"></script>
+  <script src="scripts/mobile-menu.js"></script>
+  <script src="scripts/enhancements.js"></script>
 </body>
 </html>

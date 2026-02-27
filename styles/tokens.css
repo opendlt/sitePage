@@ -1,0 +1,128 @@
+/* OpenDLT Design Tokens - Single Source of Truth */
+
+:root {
+  /* ── Colors ── */
+  --primary: #0d9488;
+  --primary-rgb: 13, 148, 136;
+  --secondary: #1e3a5f;
+  --secondary-rgb: 30, 58, 95;
+  --accent: #b8860b;
+  --accent-rgb: 184, 134, 11;
+
+  --dark: #ffffff;
+  --darker: #f1f5f9;
+  --light: #1e293b;
+  --gray: #64748b;
+  --border: #e2e8f0;
+
+  --surface: rgba(241, 245, 249, 0.7);
+  --surface-hover: rgba(226, 232, 240, 0.9);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #0d9488;
+
+  /* ── Code Block (keep dark) ── */
+  --code-bg: #1e293b;
+  --code-text: #e2e8f0;
+  --code-border: #334155;
+
+  /* ── Typography ── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.875rem, 3vw, 2.25rem);
+  --text-4xl: clamp(2rem, 4vw, 3rem);
+  --text-5xl: clamp(2.5rem, 5vw, 4rem);
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ── Border Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-primary: 0 8px 25px rgba(13, 148, 136, 0.25);
+  --shadow-secondary: 0 8px 25px rgba(30, 58, 95, 0.2);
+
+  /* ── Transitions ── */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --transition-base: all var(--duration-normal) var(--ease-default);
+
+  /* ── Layout ── */
+  --container-max: 1200px;
+  --nav-height: 80px;
+  --section-padding: 80px;
+  --section-padding-mobile: 60px;
+
+  /* ── Gradients ── */
+  --gradient-primary: linear-gradient(135deg, #0d9488, #1e3a5f);
+  --gradient-accent: linear-gradient(135deg, #b8860b, #0d9488);
+  --gradient-hero-bg: radial-gradient(ellipse at center, rgba(13, 148, 136, 0.06) 0%, transparent 70%);
+
+  /* ── Section Gradients ── */
+  --gradient-section-teal: linear-gradient(180deg, rgba(13,148,136,0.06) 0%, transparent 100%);
+  --gradient-section-navy: linear-gradient(180deg, rgba(30,58,95,0.08) 0%, transparent 100%);
+  --gradient-section-gold: linear-gradient(180deg, rgba(184,134,11,0.06) 0%, transparent 100%);
+  --gradient-dark-section: linear-gradient(135deg, #1e293b, #0f172a);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(241,245,249,0.6));
+
+  /* ── Glow Shadows ── */
+  --shadow-glow-teal: 0 0 30px rgba(13,148,136,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(184,134,11,0.12);
+  --shadow-glow-navy: 0 0 30px rgba(30,58,95,0.15);
+  --shadow-inset: inset 0 2px 4px rgba(0,0,0,0.06);
+
+  /* ── Patterns ── */
+  --dot-pattern: radial-gradient(circle, rgba(13,148,136,0.08) 1px, transparent 1px);
+  --dot-size: 20px;
+
+  /* ── Z-index scale ── */
+  --z-dropdown: 100;
+  --z-nav: 1000;
+  --z-modal: 2000;
+}

@@ -1,0 +1,140 @@
+/* OpenDLT Base Styles - Reset, Typography, Utilities */
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  background: var(--dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Skip Link (Accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--primary);
+  color: white;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  z-index: 9999;
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  transition: top var(--duration-fast) var(--ease-default);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+h1 { font-size: var(--text-5xl); font-weight: var(--weight-extrabold); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--duration-normal) var(--ease-default);
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* Focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Utility Classes ── */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-accent { color: var(--accent); }
+
+.font-mono { font-family: var(--font-mono); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold { font-weight: var(--weight-bold); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.hidden { display: none; }
+.visible { display: block; }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(var(--primary-rgb), 0.3);
+  color: var(--dark);
+}

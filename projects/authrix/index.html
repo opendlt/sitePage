@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authrix Universal DIDs - One Identity, Every Blockchain</title>
+  <meta name="description" content="World's first universal cross-chain identity system. One did:authrix, every blockchain. Privacy-preserving credentials with selective disclosure across 50+ networks.">
+  <meta name="keywords" content="DID, decentralized identity, verifiable credentials, blockchain identity, selective disclosure, universal identity, cross-chain, authrix">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Authrix Universal DIDs - One Identity, Every Blockchain">
+  <meta property="og:description" content="World's first universal cross-chain identity system. One DID, every blockchain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://opendlt.org/projects/authrix/">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <!-- Page-specific styles for the privacy credential demo -->
+  <style>
+    /* Credential Demo - unique to Authrix page */
+    .credential-demo {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-6);
+      align-items: center;
+    }
+
+    .credential-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      transition: var(--transition-base);
+    }
+
+    .credential-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .credential-card-header {
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .credential-card-title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    .credential-card-issuer {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .credential-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .credential-field:last-child {
+      border-bottom: none;
+    }
+
+    .field-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      font-weight: var(--weight-medium);
+    }
+
+    .field-value {
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .field-hidden .field-value {
+      color: var(--error);
+      opacity: 0.6;
+      letter-spacing: 1px;
+    }
+
+    .field-revealed .field-value {
+      color: var(--accent);
+    }
+
+    .disclosure-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--primary);
+    }
+
+    .disclosure-arrow svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .disclosure-arrow span {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .disclosure-note {
+      margin-top: var(--space-4);
+      padding: var(--space-3);
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      color: var(--accent);
+      text-align: center;
+      font-weight: var(--weight-medium);
+    }
+
+    /* Blockchain grid items */
+    .chain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .chain-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      transition: var(--transition-base);
+    }
+
+    .chain-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .chain-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xl);
+      flex-shrink: 0;
+    }
+
+    .chain-name {
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+    }
+
+    .chain-type {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+
+    .chain-check {
+      margin-left: auto;
+      color: var(--accent);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-lg);
+    }
+
+    /* VDK logos row */
+    .vdk-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+
+    .vdk-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      font-weight: var(--weight-medium);
+      transition: var(--transition-base);
+    }
+
+    .vdk-chip:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .vdk-more {
+      background: rgba(var(--secondary-rgb), 0.1);
+      border-color: rgba(var(--secondary-rgb), 0.3);
+      color: var(--secondary);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* Category labels */
+    .category-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-dot-active {
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.5);
+    }
+
+    .status-dot-bridge {
+      background: var(--secondary);
+      box-shadow: 0 0 8px rgba(var(--secondary-rgb), 0.5);
+    }
+
+    .category-label h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* Privacy feature items */
+    .privacy-feature-item {
+      display: flex;
+      gap: var(--space-4);
+      align-items: start;
+    }
+
+    .privacy-feature-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .privacy-feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .privacy-feature-text h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-1);
+    }
+
+    .privacy-feature-text p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Developer features grid */
+    .dev-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    .dev-feature {
+      display: flex;
+      gap: var(--space-4);
+      align-items: start;
+    }
+
+    .dev-feature-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dev-feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .dev-feature h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-1);
+    }
+
+    .dev-feature p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Hero stats row */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-12);
+      margin-top: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-extrabold);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-1);
+    }
+
+    /* CTA section overrides */
+    .cta-section {
+      text-align: center;
+      padding: var(--section-padding) 0;
+      background: var(--gradient-hero-bg);
+    }
+
+    .cta-section h2 {
+      margin-bottom: var(--space-4);
+    }
+
+    .cta-section .cta-description {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-8);
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    /* Two-column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    /* Dark-accent overrides for blockchain section */
+    .section-dark-accent .chain-item {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .section-dark-accent .chain-item:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .section-dark-accent .chain-name {
+      color: white;
+    }
+
+    .section-dark-accent .chain-type {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .section-dark-accent .chain-icon {
+      background: rgba(255,255,255,0.1);
+      color: var(--primary);
+    }
+
+    .section-dark-accent .chain-check {
+      color: var(--accent);
+    }
+
+    .section-dark-accent .category-label h3 {
+      color: white;
+    }
+
+    .section-dark-accent .vdk-chip {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .section-dark-accent .vdk-chip:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: white;
+    }
+
+    .section-dark-accent .vdk-more {
+      background: rgba(30,58,95,0.4);
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .arch-layer-sub {
+      color: var(--text-secondary);
+    }
+
+    .section-dark-accent .arch-diagram {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .section-dark-accent .arch-layer {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .section-dark-accent .arch-layer-top {
+      background: rgba(13,148,136,0.2);
+      border: 1px solid rgba(13,148,136,0.5);
+    }
+
+    .section-dark-accent .arch-layer-mid {
+      background: rgba(30,58,95,0.35);
+      border: 1px solid rgba(100,140,200,0.4);
+    }
+
+    .section-dark-accent .arch-layer-bottom {
+      background: rgba(184,134,11,0.15);
+      border: 1px solid rgba(184,134,11,0.45);
+    }
+
+    .section-dark-accent .arch-layer-title {
+      color: white;
+    }
+
+    .section-dark-accent .arch-layer-sub,
+    .section-dark-accent .arch-layer-sub span {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .section-dark-accent .arch-arrow {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .section-dark-accent .arch-arrow svg {
+      stroke: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .credential-demo {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      .disclosure-arrow {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .disclosure-arrow svg {
+        transform: rotate(90deg);
+      }
+
+      .chain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+
+      .dev-features {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-content">
+        <a href="/" class="nav-logo" aria-label="OpenDLT Home">
+          <img src="/assets/icons/opendlt-logo.svg" alt="OpenDLT" width="140" height="32">
+        </a>
+        <div class="nav-links">
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              Tooling
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="/tooling/sdks/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                SDKs
+              </a>
+              <a href="/tooling/studio/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Studio
+              </a>
+              <a href="/tooling/devnet/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
+                DevNet
+              </a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              Projects
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="/projects/authrix/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Authrix
+              </a>
+              <a href="/projects/infrix/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                Infrix
+              </a>
+              <a href="/projects/accuboard/" class="nav-dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                Accuboard
+              </a>
+            </div>
+          </div>
+          <a href="/about/" class="nav-link">About</a>
+          <a href="/docs/" class="nav-link">Docs</a>
+          <a href="https://studio.opendlt.org" class="nav-cta" target="_blank" rel="noopener">
+            Open Studio
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <span class="mobile-group-label">Tooling</span>
+    <a href="/tooling/sdks/" class="mobile-sublink">SDKs</a>
+    <a href="/tooling/studio/" class="mobile-sublink">Studio</a>
+    <a href="/tooling/devnet/" class="mobile-sublink">DevNet</a>
+    <span class="mobile-group-label">Projects</span>
+    <a href="/projects/authrix/" class="mobile-sublink">Authrix</a>
+    <a href="/projects/infrix/" class="mobile-sublink">Infrix</a>
+    <a href="/projects/accuboard/" class="mobile-sublink">Accuboard</a>
+    <a href="/about/" class="mobile-link">About</a>
+    <a href="/docs/" class="mobile-link">Docs</a>
+    <a href="https://studio.opendlt.org" class="nav-cta" target="_blank" rel="noopener">Open Studio</a>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- ════════════════════════════════════════════
+         HERO SECTION
+         ════════════════════════════════════════════ -->
+    <section class="hero hero-decorated">
+      <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+          <div style="margin-bottom:var(--space-6);">
+            <span class="badge badge-alpha">Alpha &mdash; Universal Cross-Chain Identity</span>
+          </div>
+
+          <h1>One Identity, <span class="gradient-text">Every Blockchain</span></h1>
+
+          <p class="hero-subtitle">
+            Transform any blockchain address into a universal <strong>did:authrix</strong> identity.
+            Privacy-preserving credentials with selective disclosure across Bitcoin, Ethereum,
+            Base, Solana, and 50+ blockchains.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#developers" class="btn-primary btn-lg">
+              Start Building
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://github.com/opendlt/authrix" class="btn-secondary btn-lg" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+
+          <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+            <div class="hero-stat">
+              <div class="hero-stat-value">50+</div>
+              <div class="hero-stat-label">Blockchains</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">100x</div>
+              <div class="hero-stat-label">Cost Reduction</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">&lt;50ms</div>
+              <div class="hero-stat-label">Resolution</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         FEATURES SECTION
+         ════════════════════════════════════════════ -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Revolutionary Features</h2>
+          <p>Enterprise-grade identity infrastructure that works across every blockchain</p>
+        </div>
+
+        <div class="grid-3" data-aos="fade-up" data-aos-delay="100">
+
+          <!-- Universal Onboarding -->
+          <div class="card card-accent hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v4m0 14v4m-7.07-15.07l2.83 2.83m8.48 8.48l2.83 2.83m-18.17 0l2.83-2.83m8.48-8.48l2.83-2.83M1 12h4m14 0h4"/>
+              </svg>
+            </div>
+            <h3>Universal Onboarding</h3>
+            <p>Any blockchain address instantly becomes a universal <code>did:authrix</code> identity. No complex setup, no new wallets &mdash; just instant universal access.</p>
+            <div class="tags" style="margin-top:var(--space-4);">
+              <span class="tag">Instant</span>
+              <span class="tag">Any Chain</span>
+              <span class="tag">Zero Setup</span>
+            </div>
+          </div>
+
+          <!-- Cross-Chain Sync -->
+          <div class="card card-accent hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+              </svg>
+            </div>
+            <h3>Cross-Chain Sync</h3>
+            <p>Real-time identity synchronization across all supported blockchains. Update once, verified everywhere.</p>
+            <div class="tags" style="margin-top:var(--space-4);">
+              <span class="tag">Real-time</span>
+              <span class="tag">50+ Chains</span>
+              <span class="tag">Auto-sync</span>
+            </div>
+          </div>
+
+          <!-- Privacy-First -->
+          <div class="card card-accent hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Privacy-First</h3>
+            <p>Selective disclosure with BBS+ signatures and zero-knowledge proofs. Share only what's needed, keep everything else private.</p>
+            <div class="tags" style="margin-top:var(--space-4);">
+              <span class="tag">BBS+</span>
+              <span class="tag">ZK-Proofs</span>
+              <span class="tag">GDPR Ready</span>
+            </div>
+          </div>
+
+          <!-- Lightning Fast -->
+          <div class="card card-accent hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+              </svg>
+            </div>
+            <h3>Lightning Fast</h3>
+            <p>Sub-50ms DID resolution with multi-layer caching. 100x&ndash;1000x cheaper than native blockchain operations.</p>
+            <div class="tags" style="margin-top:var(--space-4);">
+              <span class="tag">&lt;50ms</span>
+              <span class="tag">100x Cheaper</span>
+              <span class="tag">L1/L2/L3 Cache</span>
+            </div>
+          </div>
+
+          <!-- Enterprise Ready -->
+          <div class="card card-accent hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+              </svg>
+            </div>
+            <h3>Enterprise Ready</h3>
+            <p>HSM integration, threat detection, and comprehensive compliance. SOC 2, GDPR, HIPAA ready with automated governance.</p>
+            <div class="tags" style="margin-top:var(--space-4);">
+              <span class="tag">HSM</span>
+              <span class="tag">SOC 2</span>
+              <span class="tag">Compliance</span>
+            </div>
+          </div>
+
+          <!-- No Smart Contract Risk -->
+          <div class="card card-accent hover-lift">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              </svg>
+            </div>
+            <h3>No Smart Contract Risk</h3>
+            <p>VDK bridge architecture eliminates smart contract vulnerabilities. Monitor-only approach with Accumulate L0 as single source of truth.</p>
+            <div class="tags" style="margin-top:var(--space-4);">
+              <span class="tag">No Risk</span>
+              <span class="tag">VDK Bridge</span>
+              <span class="tag">L0 Authority</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         BLOCKCHAIN SUPPORT SECTION
+         ════════════════════════════════════════════ -->
+    <section id="blockchains" class="section section-dark-accent">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Universal Blockchain Support</h2>
+          <p>Production-ready integrations with major blockchains, expanding to 50+ networks</p>
+        </div>
+
+        <!-- Production Ready -->
+        <div data-aos="fade-up" data-aos-delay="100" style="margin-bottom:var(--space-12);">
+          <div class="category-label">
+            <div class="status-dot status-dot-active"></div>
+            <h3>Production Ready</h3>
+          </div>
+          <div class="chain-grid" data-aos-stagger="100">
+            <div class="chain-item">
+              <div class="chain-icon">&#8383;</div>
+              <div>
+                <div class="chain-name">Bitcoin</div>
+                <div class="chain-type">PKH Addresses</div>
+              </div>
+              <span class="chain-check">&#10003;</span>
+            </div>
+            <div class="chain-item">
+              <div class="chain-icon">&#9830;</div>
+              <div>
+                <div class="chain-name">Ethereum</div>
+                <div class="chain-type">All Address Types</div>
+              </div>
+              <span class="chain-check">&#10003;</span>
+            </div>
+            <div class="chain-item">
+              <div class="chain-icon">&#9649;</div>
+              <div>
+                <div class="chain-name">Base</div>
+                <div class="chain-type">L2 Integration</div>
+              </div>
+              <span class="chain-check">&#10003;</span>
+            </div>
+            <div class="chain-item">
+              <div class="chain-icon">&#9788;</div>
+              <div>
+                <div class="chain-name">Solana</div>
+                <div class="chain-type">Program Accounts</div>
+              </div>
+              <span class="chain-check">&#10003;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- VDK Bridge Supported -->
+        <div data-aos="fade-up" data-aos-delay="200" style="margin-bottom:var(--space-12);">
+          <div class="category-label">
+            <div class="status-dot status-dot-bridge"></div>
+            <h3>VDK Bridge Supported</h3>
+          </div>
+          <div class="vdk-logos">
+            <span class="vdk-chip">Polygon</span>
+            <span class="vdk-chip">Arbitrum</span>
+            <span class="vdk-chip">Optimism</span>
+            <span class="vdk-chip">BSC</span>
+            <span class="vdk-chip">Avalanche</span>
+            <span class="vdk-chip">Litecoin</span>
+            <span class="vdk-chip">Dogecoin</span>
+            <span class="vdk-chip">Cardano</span>
+            <span class="vdk-chip vdk-more">+40 more</span>
+          </div>
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="arch-diagram" data-aos="fade-up" data-aos-delay="300">
+          <div class="arch-layer arch-layer-top">
+            <div class="arch-layer-title" style="font-weight:var(--weight-semibold);font-size:var(--text-base);margin-bottom:var(--space-2);">External Blockchains</div>
+            <div class="arch-layer-sub" style="display:flex;justify-content:center;gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-sm);">
+              <span>Bitcoin</span>
+              <span>Ethereum</span>
+              <span>Base</span>
+              <span>Solana</span>
+              <span>+46 more</span>
+            </div>
+          </div>
+          <div class="arch-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </div>
+          <div class="arch-layer arch-layer-mid">
+            <div class="arch-layer-title" style="font-weight:var(--weight-semibold);font-size:var(--text-base);margin-bottom:var(--space-1);">VDK Bridge Layer</div>
+            <div class="arch-layer-sub" style="font-size:var(--text-sm);">Monitor-Only &bull; No Smart Contracts</div>
+          </div>
+          <div class="arch-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </div>
+          <div class="arch-layer arch-layer-bottom">
+            <div class="arch-layer-title" style="font-weight:var(--weight-semibold);font-size:var(--text-base);margin-bottom:var(--space-1);">Accumulate L0</div>
+            <div class="arch-layer-sub" style="font-size:var(--text-sm);">Single Source of Truth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         PRIVACY SECTION
+         ════════════════════════════════════════════ -->
+    <section id="privacy" class="section section-wave-bottom">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Privacy-Preserving Credentials</h2>
+          <p>Prove claims without revealing unnecessary personal information using selective disclosure</p>
+        </div>
+
+        <!-- Selective Disclosure Demo -->
+        <div class="credential-demo" data-aos="fade-up" data-aos-delay="100">
+          <!-- Original Credential -->
+          <div class="credential-card">
+            <div class="credential-card-header">
+              <div class="credential-card-title">Education Credential</div>
+              <div class="credential-card-issuer">University of Technology</div>
+            </div>
+            <div class="credential-field">
+              <span class="field-label">Name</span>
+              <span class="field-value">Alice Johnson</span>
+            </div>
+            <div class="credential-field">
+              <span class="field-label">Date of Birth</span>
+              <span class="field-value">1990-05-15</span>
+            </div>
+            <div class="credential-field">
+              <span class="field-label">Degree</span>
+              <span class="field-value">Master of Science</span>
+            </div>
+            <div class="credential-field">
+              <span class="field-label">GPA</span>
+              <span class="field-value">3.8</span>
+            </div>
+            <div class="credential-field">
+              <span class="field-label">Graduation Year</span>
+              <span class="field-value">2015</span>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="disclosure-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            <span>Selective Disclosure</span>
+          </div>
+
+          <!-- Disclosed Credential -->
+          <div class="credential-card">
+            <div class="credential-card-header">
+              <div class="credential-card-title">Education Credential</div>
+              <div class="credential-card-issuer">University of Technology</div>
+            </div>
+            <div class="credential-field field-hidden">
+              <span class="field-label">Name</span>
+              <span class="field-value">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</span>
+            </div>
+            <div class="credential-field field-hidden">
+              <span class="field-label">Date of Birth</span>
+              <span class="field-value">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</span>
+            </div>
+            <div class="credential-field field-revealed">
+              <span class="field-label">Degree</span>
+              <span class="field-value">Master of Science</span>
+            </div>
+            <div class="credential-field field-hidden">
+              <span class="field-label">GPA</span>
+              <span class="field-value">&#9608;&#9608;&#9608;&#9608;</span>
+            </div>
+            <div class="credential-field field-revealed">
+              <span class="field-label">Graduation Year</span>
+              <span class="field-value">2015</span>
+            </div>
+            <div class="disclosure-note">
+              Only degree and graduation year revealed &mdash; identity verified via BBS+ proof
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Features -->
+        <div class="grid-3" data-aos="fade-up" data-aos-delay="200" style="margin-top:var(--space-16);">
+          <div class="card hover-lift" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-4);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Selective Disclosure</h3>
+            <p>Share only what's needed. Prove you're over 21 without revealing your exact age or any other personal data.</p>
+          </div>
+          <div class="card hover-lift" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-4);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <circle cx="12" cy="16" r="1"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+            </div>
+            <h3>Zero-Knowledge Proofs</h3>
+            <p>Prove statements are true without revealing the underlying data. Cryptographic guarantees with no information leakage.</p>
+          </div>
+          <div class="card hover-lift" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-4);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 9V5a3 3 0 00-6 0v4"/>
+                <rect x="2" y="9" width="20" height="12" rx="2" ry="2"/>
+              </svg>
+            </div>
+            <h3>BBS+ Signatures</h3>
+            <p>Cryptographic signatures that enable unlinkable selective disclosure. Multi-message signing with efficient proof generation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         DEVELOPER SECTION
+         ════════════════════════════════════════════ -->
+    <section id="developers" class="section section-dark">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Built for Developers</h2>
+          <p>Simple APIs, comprehensive documentation, and powerful SDKs to integrate universal identity</p>
+        </div>
+
+        <!-- Code Tabs -->
+        <div class="tab-group" data-aos="fade-up" data-aos-delay="100" style="max-width:1000px;margin:0 auto var(--space-16);">
+          <div class="tab-nav">
+            <button class="tab-btn active" data-tab="authrix-onboard">Universal Onboarding</button>
+            <button class="tab-btn" data-tab="authrix-resolve">DID Resolution</button>
+            <button class="tab-btn" data-tab="authrix-credential">Credential Issuance</button>
+          </div>
+
+          <!-- Universal Onboarding -->
+          <div class="tab-content active" id="authrix-onboard">
+            <div class="code-block" data-language="bash">
+              <pre><code># Convert any blockchain address to universal DID
+curl -X POST "https://api.authrix.id/onboard" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nativeAddress": "0x742d35Cc6134C38532852D24E1e865B4Dd8CAE7f",
+    "chainId": "eip155:1",
+    "targetChains": ["eip155:8453", "bip122:bitcoin"]
+  }'
+
+# Response:
+{
+  "did": "did:authrix:pkh:eip155:1:0x742d35Cc...",
+  "accumulateStorage": "acc://eth-user-742d35cc.acme/ethereum/did",
+  "synchronizedChains": ["eip155:1", "eip155:8453", "bip122:bitcoin"],
+  "status": "active"
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- DID Resolution -->
+          <div class="tab-content" id="authrix-resolve">
+            <div class="code-block" data-language="bash">
+              <pre><code># Resolve any Authrix DID
+curl "https://api.authrix.id/resolve?did=did:authrix:alice.acme"
+
+# Response:
+{
+  "@context": ["https://www.w3.org/ns/did/v1"],
+  "id": "did:authrix:alice.acme",
+  "verificationMethod": [
+    {
+      "id": "did:authrix:alice.acme#key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:authrix:alice.acme"
+    }
+  ],
+  "service": [...],
+  "crossChainSupport": {
+    "ethereum": "active",
+    "bitcoin": "active",
+    "base": "active",
+    "solana": "active"
+  }
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- Credential Issuance -->
+          <div class="tab-content" id="authrix-credential">
+            <div class="code-block" data-language="javascript">
+              <pre><code>// Issue privacy-preserving credential with BBS+ signatures
+import { Authrix } from '@opendlt/authrix-sdk';
+
+const authrix = new Authrix({ apiKey: process.env.AUTHRIX_KEY });
+
+const credential = await authrix.issueCredential({
+  issuerDid: "did:authrix:university.acme",
+  subjectDid: "did:authrix:alice.acme",
+  credentialSubject: {
+    degree: "Master of Science",
+    graduationYear: 2015,
+    gpa: 3.8
+  },
+  privacyLevel: "high",
+  selectiveDisclosure: true
+});
+
+console.log(credential.id);
+// Credential with BBS+ signatures ready for selective disclosure
+
+// Verify with selective disclosure
+const proof = await authrix.createPresentation({
+  credential: credential.id,
+  disclose: ["degree", "graduationYear"]  // Only reveal these fields
+});</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Developer Features -->
+        <div class="dev-features" data-aos="fade-up" data-aos-delay="200">
+          <div class="dev-feature">
+            <div class="dev-feature-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Simple REST APIs</h4>
+              <p>Clean, intuitive APIs that work with any programming language. Onboard, resolve, and issue in minutes.</p>
+            </div>
+          </div>
+          <div class="dev-feature">
+            <div class="dev-feature-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Comprehensive Docs</h4>
+              <p>Step-by-step guides, API references, and interactive examples for every endpoint.</p>
+            </div>
+          </div>
+          <div class="dev-feature">
+            <div class="dev-feature-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Multiple SDKs</h4>
+              <p>Native SDKs for JavaScript, Python, Go, and Rust. Type-safe with full IDE autocomplete.</p>
+            </div>
+          </div>
+          <div class="dev-feature">
+            <div class="dev-feature-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Instant Setup</h4>
+              <p>Get started in minutes with our one-command development environment and sandbox APIs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         CTA SECTION
+         ════════════════════════════════════════════ -->
+    <section class="cta-section">
+      <div class="container">
+        <div data-aos="fade-up">
+          <h2>Ready to Build the Future of Identity?</h2>
+          <p class="cta-description">
+            Join the universal identity revolution. Start building with Authrix DIDs today &mdash; open source, production ready, and backed by the Accumulate protocol.
+          </p>
+
+          <div class="cta-actions">
+            <a href="https://github.com/opendlt/authrix" class="btn-primary btn-lg" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Start on GitHub
+            </a>
+            <a href="/docs/" class="btn-secondary btn-lg">
+              Read Documentation
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="logo-link">
+            <img src="/assets/icons/opendlt-logo.svg" alt="OpenDLT" width="140" height="32">
+          </a>
+          <p>Open-source tools and SDKs for building on the Accumulate Protocol.</p>
+          <div class="footer-social">
+            <a href="https://github.com/opendlt" class="social-link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://discord.gg/accumulate" class="social-link" aria-label="Discord">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.079-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.128c.12-.098.246-.198.373-.292a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="https://twitter.com/AccumulateHQ" class="social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Tooling</h4>
+          <ul>
+            <li><a href="/tooling/sdks/">SDKs</a></li>
+            <li><a href="/tooling/studio/">Accumulate Studio</a></li>
+            <li><a href="/tooling/devnet/">DevNet Launcher</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Projects</h4>
+          <ul>
+            <li><a href="/projects/authrix/">Authrix</a></li>
+            <li><a href="/projects/infrix/">Infrix</a></li>
+            <li><a href="/projects/accuboard/">Accuboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="https://docs.accumulatenetwork.io" target="_blank" rel="noopener">Protocol Docs</a></li>
+            <li><a href="https://github.com/opendlt" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/about/">About OpenDLT</a></li>
+            <li><a href="https://discord.gg/accumulate" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="https://github.com/opendlt/opendlt-site/issues" target="_blank" rel="noopener">Contribute</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 OpenDLT. Open-source tools for the Accumulate ecosystem.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/tabs.js"></script>
+  <script src="/scripts/copy-code.js"></script>
+  <script src="/scripts/mobile-menu.js"></script>
+  <script src="/scripts/enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!--
+  OpenDLT Shared Navigation
+  Copy this markup into every page. Adjust relative paths per page depth.
+  Root pages:       href="/"         css="styles/main.css"
+  /tooling/:        href="../"       css="../styles/main.css"
+  /tooling/sdks/:   href="../../"    css="../../styles/main.css"
+  /projects/authrix/: same as /tooling/sdks/
+-->
+
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Navigation -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-content">
+
+      <!-- Logo -->
+      <a href="/" class="nav-logo" aria-label="OpenDLT Home">
+        <img src="/assets/icons/opendlt-logo.svg" alt="OpenDLT" width="140" height="32">
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="nav-links">
+        <!-- Tooling Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Tooling
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/tooling/sdks/" class="nav-dropdown-item" role="menuitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              SDKs
+            </a>
+            <a href="/tooling/studio/" class="nav-dropdown-item" role="menuitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Studio
+            </a>
+            <a href="/tooling/devnet/" class="nav-dropdown-item" role="menuitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
+              DevNet
+            </a>
+          </div>
+        </div>
+
+        <!-- Projects Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Projects
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/projects/authrix/" class="nav-dropdown-item" role="menuitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Authrix
+            </a>
+            <a href="/projects/infrix/" class="nav-dropdown-item" role="menuitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+              Infrix
+            </a>
+            <a href="/projects/accuboard/" class="nav-dropdown-item" role="menuitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+              Accuboard
+            </a>
+          </div>
+        </div>
+
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/docs/" class="nav-link">Docs</a>
+
+        <a href="https://studio.opendlt.org" class="nav-cta" target="_blank" rel="noopener">
+          Open Studio
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <span class="mobile-group-label">Tooling</span>
+  <a href="/tooling/sdks/" class="mobile-sublink">SDKs</a>
+  <a href="/tooling/studio/" class="mobile-sublink">Studio</a>
+  <a href="/tooling/devnet/" class="mobile-sublink">DevNet</a>
+
+  <span class="mobile-group-label">Projects</span>
+  <a href="/projects/authrix/" class="mobile-sublink">Authrix</a>
+  <a href="/projects/infrix/" class="mobile-sublink">Infrix</a>
+  <a href="/projects/accuboard/" class="mobile-sublink">Accuboard</a>
+
+  <a href="/about/" class="mobile-link">About</a>
+  <a href="/docs/" class="mobile-link">Docs</a>
+
+  <a href="https://studio.opendlt.org" class="nav-cta" target="_blank" rel="noopener">
+    Open Studio
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+</div>

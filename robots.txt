@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://opendlt.org/sitemap.xml
