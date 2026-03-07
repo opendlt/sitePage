@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infrix - WASM Smart Contracts - OpenDLT</title>
-  <meta name="description" content="Execute WebAssembly smart contracts as Layer-1 transactions on the Accumulate Layer-0 network.">
-  <meta property="og:title" content="Infrix - WASM Smart Contracts - OpenDLT">
-  <meta property="og:description" content="Execute WebAssembly smart contracts as Layer-1 transactions on the Accumulate Layer-0 network.">
+  <title>Identity Scope - Accumulate Identity Explorer - OpenDLT</title>
+  <meta name="description" content="Visualize and explore the full hierarchy of Accumulate Digital Identities (ADIs), accounts, key books, and key pages.">
+  <meta property="og:title" content="Identity Scope - Accumulate Identity Explorer - OpenDLT">
+  <meta property="og:description" content="Visualize and explore the full hierarchy of Accumulate Digital Identities.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://opendlt.org/projects/infrix/">
+  <meta property="og:url" content="https://opendlt.org/projects/identityScope/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -75,46 +75,49 @@
       <div class="container">
         <div class="hero-content" data-aos="fade-up">
           <span class="badge badge-beta">Beta</span>
-          <h1>WASM Smart Contracts on <span class="gradient-text">Accumulate</span></h1>
-          <p class="hero-subtitle">Execute sandboxed WebAssembly modules as Layer-1 transactions on the Accumulate Layer-0 network.</p>
+          <h1>Accumulate <span class="gradient-text">Identity Scope</span></h1>
+          <p class="hero-subtitle">Visualize and explore the full hierarchy of Accumulate Digital Identities &mdash; ADIs, token accounts, data accounts, key books, and key pages &mdash; all in an interactive graph.</p>
           <div class="hero-actions">
-            <a href="https://github.com/opendlt/infrix" class="btn-primary btn-lg" target="_blank" rel="noopener">
+            <a href="https://accumulate-identity-scope.vercel.app/" class="btn-primary btn-lg" target="_blank" rel="noopener">
+              Launch Identity Scope
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/opendlt/accumulate-identity-scope" class="btn-secondary btn-lg" target="_blank" rel="noopener">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               View on GitHub
             </a>
-            <a href="/docs/" class="btn-secondary btn-lg">Read the Docs</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Architecture Section -->
-    <section class="section section-dark-accent">
+    <!-- How It Works -->
+    <section class="section section-dark section-wave-bottom">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2>L1 on L0 Architecture</h2>
-          <p>How Infrix executes smart contracts on Accumulate</p>
+          <h2>How It Works</h2>
+          <p>Identity Scope crawls the Accumulate network and maps the complete identity tree</p>
         </div>
         <div data-aos="fade-up" data-aos-delay="100" style="max-width:600px;margin:0 auto;">
           <svg class="arch-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
-            <!-- Node: WASM Modules -->
-            <rect class="arch-node arch-node-primary" x="100" y="20" width="300" height="70" rx="12"/>
-            <text class="arch-label" x="250" y="52" text-anchor="middle" fill="white">Your WASM Modules</text>
-            <text class="arch-sublabel" x="250" y="72" text-anchor="middle" fill="rgba(255,255,255,0.7)">User-deployed smart contract bytecode</text>
+            <!-- Node: Crawl Phase -->
+            <rect class="arch-node arch-node-primary" x="130" y="20" width="240" height="70" rx="12"/>
+            <text class="arch-label" x="250" y="52" text-anchor="middle">Crawl</text>
+            <text class="arch-sublabel" x="250" y="72" text-anchor="middle">Walk ADIs, accounts, key books</text>
             <!-- Arrow 1 -->
-            <line class="arch-line arch-line-animated" x1="250" y1="90" x2="250" y2="125" stroke="rgba(13,148,136,0.8)"/>
-            <polygon class="arch-arrow" points="243,122 257,122 250,132" fill="rgba(13,148,136,0.8)"/>
-            <!-- Node: Infrix Runtime -->
-            <rect class="arch-node arch-node-secondary" x="75" y="135" width="350" height="70" rx="12"/>
-            <text class="arch-label" x="250" y="167" text-anchor="middle" fill="white">Infrix Runtime (L1)</text>
-            <text class="arch-sublabel" x="250" y="187" text-anchor="middle" fill="rgba(255,255,255,0.7)">Sandboxed WASM execution + 60+ host functions</text>
+            <line class="arch-line arch-line-animated" x1="250" y1="90" x2="250" y2="125"/>
+            <polygon class="arch-arrow" points="243,122 257,122 250,132" fill="var(--primary)"/>
+            <!-- Node: Map Phase -->
+            <rect class="arch-node arch-node-secondary" x="90" y="135" width="320" height="70" rx="12"/>
+            <text class="arch-label" x="250" y="167" text-anchor="middle">Map</text>
+            <text class="arch-sublabel" x="250" y="187" text-anchor="middle">Build relational graph from account data</text>
             <!-- Arrow 2 -->
-            <line class="arch-line arch-line-animated" x1="250" y1="205" x2="250" y2="240" stroke="rgba(13,148,136,0.8)"/>
-            <polygon class="arch-arrow" points="243,237 257,237 250,247" fill="rgba(13,148,136,0.8)"/>
-            <!-- Node: Accumulate Protocol -->
+            <line class="arch-line arch-line-animated" x1="250" y1="205" x2="250" y2="240"/>
+            <polygon class="arch-arrow" points="243,237 257,237 250,247" fill="var(--primary)"/>
+            <!-- Node: Visualize Phase -->
             <rect class="arch-node arch-node-accent" x="50" y="250" width="400" height="70" rx="12"/>
-            <text class="arch-label" x="250" y="282" text-anchor="middle" fill="white">Accumulate Protocol (L0)</text>
-            <text class="arch-sublabel" x="250" y="302" text-anchor="middle" fill="rgba(255,255,255,0.7)">Consensus, state, and anchoring</text>
+            <text class="arch-label" x="250" y="282" text-anchor="middle">Visualize</text>
+            <text class="arch-sublabel" x="250" y="302" text-anchor="middle">Interactive force-directed graph explorer</text>
           </svg>
         </div>
       </div>
@@ -125,130 +128,100 @@
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2>Features</h2>
-          <p>Everything you need to build and deploy smart contracts on Accumulate</p>
+          <p>Everything you need to understand Accumulate's identity landscape</p>
         </div>
         <div class="grid-3" data-aos-stagger="120">
-          <div class="card card-tint-teal hover-lift">
+          <div class="card card-accent hover-lift">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
             </div>
-            <h3>60+ Host Functions</h3>
-            <p>Rich standard library for token operations, data access, and cryptographic primitives built directly into the runtime.</p>
+            <h3>Identity Tree Mapping</h3>
+            <p>Crawl the entire Accumulate network to discover ADIs and map their full hierarchy of sub-accounts, key books, and key pages.</p>
           </div>
-          <div class="card card-tint-navy hover-lift">
+          <div class="card card-accent hover-lift">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
-            <h3>Native Token Standards</h3>
-            <p>Mint, transfer, and burn tokens natively within your contracts using first-class token primitives.</p>
+            <h3>Interactive Explorer</h3>
+            <p>Force-directed graph visualization lets you explore identity relationships. Click any node to inspect its details, accounts, and connections.</p>
           </div>
-          <div class="card card-tint-teal hover-lift">
+          <div class="card card-accent hover-lift">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
             </div>
-            <h3>Sandboxed Execution</h3>
-            <p>Memory-safe WASM sandbox with strict resource limits. Contracts cannot access the host system or other contracts without permission.</p>
+            <h3>Network Statistics</h3>
+            <p>Aggregate stats on total ADIs, account types, key distribution, and network-wide identity patterns at a glance.</p>
           </div>
-          <div class="card card-tint-navy hover-lift">
+          <div class="card card-accent hover-lift">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            <h3>Multi-Language Support</h3>
-            <p>Write contracts in Rust, C, AssemblyScript, or any language that compiles to WebAssembly.</p>
+            <h3>ADI Deep Dive</h3>
+            <p>Search for any ADI by URL and see its complete account tree &mdash; token accounts, data accounts, key books, and key pages.</p>
           </div>
-          <div class="card card-tint-teal hover-lift">
+          <div class="card card-accent hover-lift">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
-            <h3>Deterministic Execution</h3>
-            <p>Identical results across all validators. Every contract execution is fully reproducible and verifiable.</p>
+            <h3>Key Analysis</h3>
+            <p>Inspect key books and key pages associated with each identity. Understand the signing authority structure of any ADI.</p>
           </div>
-          <div class="card card-tint-navy hover-lift">
+          <div class="card card-accent hover-lift">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             </div>
-            <h3>Gas Metering</h3>
-            <p>Fair, predictable execution costs. Every operation is metered so resource usage is transparent and bounded.</p>
+            <h3>Data Export</h3>
+            <p>Export crawled identity data to a local SQLite database for offline analysis, custom queries, and integration with other tools.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Code Example Section -->
+    <!-- Architecture Section -->
     <section class="section section-dark">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2>Write a Contract</h2>
-          <p>A simple token transfer contract using the Infrix SDK</p>
+          <h2>Architecture</h2>
+          <p>A two-phase crawler with a React-based explorer frontend</p>
         </div>
-        <div data-aos="fade-up" data-aos-delay="100" style="max-width:800px;margin:0 auto;">
-          <div class="code-block" data-language="rust">
-            <pre><code>use infrix_sdk::prelude::*;
-
-#[infrix::contract]
-pub fn transfer(to: Address, amount: u64) -> Result&lt;()&gt; {
-    let sender = infrix::caller();
-    let balance = infrix::balance_of(&amp;sender)?;
-    require!(balance &gt;= amount, "insufficient balance");
-
-    infrix::transfer(&amp;sender, &amp;to, amount)?;
-    infrix::emit_event("Transfer", &amp;[sender, to], amount);
-    Ok(())
-}</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2>Roadmap</h2>
-          <p>Tracking progress toward production-ready smart contracts</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="100" style="max-width:600px;margin:0 auto 3rem;">
-          <div class="progress-label"><span>Overall Progress</span><span>60%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
-        </div>
-        <div class="grid-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="grid-3" data-aos="fade-up" data-aos-delay="100">
           <div class="card card-accent hover-lift">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-              <h3>Core Runtime</h3>
-              <span class="badge badge-success">Complete</span>
+              <h3>Phase 1: ADI Discovery</h3>
             </div>
-            <p>Sandboxed WASM execution engine with full bytecode validation, memory isolation, and deterministic state transitions.</p>
+            <p>Walks the Accumulate network to discover all registered ADIs and records them in a local database for further analysis.</p>
           </div>
           <div class="card card-accent hover-lift">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-              <h3>Host Functions</h3>
-              <span class="badge badge-beta">In Progress</span>
+              <h3>Phase 2: Deep Crawl</h3>
             </div>
-            <p>60+ host functions for token operations, persistent storage, cryptographic primitives, and cross-contract calls.</p>
+            <p>For each discovered ADI, queries all sub-accounts, token accounts, data accounts, key books, and key pages to build the full identity tree.</p>
           </div>
           <div class="card card-accent hover-lift">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-              <h3>Developer Tools</h3>
-              <span class="badge badge-concept">Planned</span>
+              <h3>Explorer Frontend</h3>
             </div>
-            <p>CLI toolchain, interactive debugger, deployment pipeline, and integration with Accumulate Studio.</p>
+            <p>React + TypeScript web app with force-directed graph visualization, search, filtering, and detailed account inspection.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="section section-dark">
+    <section class="section section-dark-accent">
       <div class="container">
         <div class="hero-content" data-aos="fade-up" style="padding-top:0;">
-          <h2>Start Building Smart Contracts</h2>
-          <p class="hero-subtitle">Infrix is open-source and ready for experimentation. Clone the repo, write your first contract, and deploy to the Accumulate DevNet.</p>
+          <h2>Explore the Network</h2>
+          <p class="hero-subtitle">See the full scope of Accumulate's identity layer. Launch the live explorer or run it locally from source.</p>
           <div class="hero-actions">
-            <a href="https://github.com/opendlt/infrix" class="btn-primary btn-lg" target="_blank" rel="noopener">
+            <a href="https://accumulate-identity-scope.vercel.app/" class="btn-primary btn-lg" target="_blank" rel="noopener">
+              Launch Identity Scope
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/opendlt/accumulate-identity-scope" class="btn-secondary btn-lg" target="_blank" rel="noopener">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
-            <a href="/docs/" class="btn-secondary btn-lg">Read the Docs</a>
           </div>
         </div>
       </div>
